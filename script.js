@@ -8,6 +8,7 @@ var y = canvas.height - 30;
 var dx = 2;
 var dy = -2;
 var ballRadius = 10;
+var a = -0.2;
 
 function drawBall() {
   ctx.beginPath();
@@ -15,6 +16,12 @@ function drawBall() {
   ctx.fillStyle = "#0095DD";
   ctx.fill();
   ctx.closePath();
+}
+function changeColor() {
+  if (ctx.globalAlpha <= 0.4 || ctx.globalAlpha >= 1) {
+    a = -a;
+  }
+  ctx.globalAlpha += a;
 }
 function draw() {
   // clear the previous art
@@ -25,9 +32,11 @@ function draw() {
   y += dy;
   if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
     dx = -dx;
+    changeColor();
   }
   if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
     dy = -dy;
+    changeColor();
   }
 }
 setInterval(draw, 10);
