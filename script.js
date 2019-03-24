@@ -18,7 +18,7 @@ function drawBall() {
   ctx.closePath();
 }
 function changeColor() {
-  if (ctx.globalAlpha <= 0.4 || ctx.globalAlpha >= 1) {
+  if (ctx.globalAlpha <= 0.6 || ctx.globalAlpha >= 1) {
     a = -a;
   }
   ctx.globalAlpha += a;
