@@ -12,6 +12,8 @@ var a = -0.2;
 var paddleHeight = 10;
 var paddleWidth = 75;
 var paddleX = (canvas.width - paddleWidth) / 2;
+var rightPressed = false;
+var leftPressed = false;
 
 function drawBall() {
   ctx.beginPath();
@@ -49,5 +51,26 @@ function draw() {
     // changeColor();
   }
   drawPaddle();
+  if (rightPressed && paddleX < canvas.width - paddleWidth) {
+    paddleX += 7;
+  } else if (leftPressed && paddleX > 0) {
+    paddleX -= 7;
+  }
+}
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+function keyDownHandler(e) {
+  if (e.key == "Right" || e.key == "ArrowRight") {
+    rightPressed = true;
+  } else if (e.key == "Left" || e.key == "ArrowLeft") {
+    leftPressed = true;
+  }
+}
+function keyUpHandler(e) {
+  if (e.key == "Right" || e.key == "ArrowRight") {
+    rightPressed = false;
+  } else if (e.key == "Left" || e.key == "ArrowLeft") {
+    leftPressed = false;
+  }
 }
 setInterval(draw, 10);
