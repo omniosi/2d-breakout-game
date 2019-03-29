@@ -46,7 +46,6 @@ function draw() {
     dx = -dx;
     // changeColor();
   }
-  // if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
   if (y + dy < ballRadius) {
     dy = -dy;
     // changeColor();
