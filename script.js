@@ -46,9 +46,18 @@ function draw() {
     dx = -dx;
     // changeColor();
   }
-  if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
+  // if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
+  if (y + dy < ballRadius) {
     dy = -dy;
     // changeColor();
+  } else if (y + dy > canvas.height - ballRadius) {
+    if (x > paddleX && x < paddleX + paddleWidth) {
+      dy = -dy;
+    } else {
+      alert("GAME OVER");
+      document.location.reload();
+      clearInterval(interval); // Needed for Chgrome to end game
+    }
   }
   drawPaddle();
   if (rightPressed && paddleX < canvas.width - paddleWidth) {
@@ -73,4 +82,4 @@ function keyUpHandler(e) {
     leftPressed = false;
   }
 }
-setInterval(draw, 10);
+var interval = setInterval(draw, 10);
