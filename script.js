@@ -36,6 +36,21 @@ function drawBall() {
   ctx.fill();
   ctx.closePath();
 }
+function drawBricks() {
+  for (let c = 0; c < brickColumnCount; c++) {
+    for (let r = 0; r < brickRowCount; r++) {
+      var brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
+      var brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
+      bricks[c][r].x = brickX;
+      bricks[c][r].y = brickY;
+      ctx.beginPath();
+      ctx.rect(brickX, brickY, brickWidth, brickHeight);
+      ctx.fillStyle = "#0095DD";
+      ctx.fill();
+      ctx.closePath();
+    }
+  }
+}
 function drawPaddle() {
   ctx.beginPath();
   ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
@@ -79,6 +94,7 @@ function draw() {
   } else if (leftPressed && paddleX > 0) {
     paddleX -= 7;
   }
+  drawBricks();
 }
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
