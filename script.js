@@ -112,4 +112,15 @@ function keyUpHandler(e) {
     leftPressed = false;
   }
 }
+function collisionDetection() {
+  for (let c = 0; c < brickColumnCount; c++) {
+    for (let r = 0; r < brickRowCount; r++) {
+      const b = bricks[c][r];
+      // calculations
+      if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+        dy = -dy;
+      }
+    }
+  }
+}
 var interval = setInterval(draw, 10);
