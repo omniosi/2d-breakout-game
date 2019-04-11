@@ -14,8 +14,8 @@ var paddleWidth = 75;
 var paddleX = (canvas.width - paddleWidth) / 2;
 var rightPressed = false;
 var leftPressed = false;
-var brickRowCount = 5;
-var brickColumnCount = 3;
+var brickRowCount = 3;
+var brickColumnCount = 5;
 var brickWidth = 75;
 var brickHeight = 20;
 var brickPadding = 10;
@@ -64,6 +64,7 @@ function collisionDetection() {
         ) {
           dy = -dy;
           b.status = 0;
+          changeColor();
         }
       }
     }
@@ -124,7 +125,7 @@ function draw() {
     // changeColor();
   } else if (y + dy > canvas.height - ballRadius) {
     if (x > paddleX && x < paddleX + paddleWidth) {
-      dy += 2; // make the ball go faster
+      // dy += 2; // make the ball go faster
       dy = -dy;
     } else {
       alert("GAME OVER");
