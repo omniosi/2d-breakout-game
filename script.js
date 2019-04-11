@@ -39,7 +39,7 @@ function drawBall() {
 function drawBricks() {
   for (let c = 0; c < brickColumnCount; c++) {
     for (let r = 0; r < brickRowCount; r++) {
-      if (brics[c][r] == 1) {
+      if (bricks[c][r] == 1) {
         var brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
         var brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
         bricks[c][r].x = brickX;
@@ -87,7 +87,7 @@ function draw() {
     } else {
       alert("GAME OVER");
       document.location.reload();
-      clearInterval(interval); // Needed for Chgrome to end game
+      clearInterval(interval); // Needed for Chrome to end game
     }
   }
   drawPaddle();
@@ -118,9 +118,16 @@ function collisionDetection() {
   for (let c = 0; c < brickColumnCount; c++) {
     for (let r = 0; r < brickRowCount; r++) {
       const b = bricks[c][r];
-      // calculations
-      if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
-        dy = -dy;
+      if (b.status == 1) {
+        if (
+          x > b.x &&
+          x < b.x + brickWidth &&
+          y > b.y &&
+          y < b.y + brickHeight
+        ) {
+          dy = -dy;
+          b.status = 0;
+        }
       }
     }
   }
