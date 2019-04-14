@@ -66,9 +66,11 @@ function collisionDetection() {
           dy = -dy;
           b.status = 0;
           // changeColor();
-          score++;
-          if (score == brickRowCount * brickColumnCount) {
-            alert("YOU WIN, CONGRATULATIONS!!!");
+          // score++;
+          score = score += 2;
+          // if (score == brickRowCount * brickColumnCount) {
+          if (score >= brickRowCount * brickColumnCount * 2) {
+            alert("YOU WIN, CONGRATULATIONS!!! Your score is " + score);
             document.location.reload();
             clearInterval(interval); //Needed for Chrome to end game
           }
