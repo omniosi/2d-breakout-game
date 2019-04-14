@@ -21,9 +21,9 @@ var brickHeight = 20;
 var brickPadding = 10;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
-var bricks = [];
 var score = 0;
 
+var bricks = [];
 for (var c = 0; c < brickColumnCount; c++) {
   bricks[c] = [];
   for (var r = 0; r < brickRowCount; r++) {
@@ -67,6 +67,11 @@ function collisionDetection() {
           b.status = 0;
           // changeColor();
           score++;
+          if (score == brickRowCount * brickColumnCount) {
+            alert("YOU WIN, CONGRATULATIONS!!!");
+            document.location.reload();
+            clearInterval(interval); //Needed for Chrome to end game
+          }
         }
       }
     }
