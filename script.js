@@ -33,6 +33,7 @@ for (var c = 0; c < brickColumnCount; c++) {
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("mousemove", mouseMoveHandler, false);
 
 function keyDownHandler(e) {
   // if (e.key == "Right" || e.key == "ArrowRight") {
@@ -52,6 +53,7 @@ function keyUpHandler(e) {
     leftPressed = false;
   }
 }
+
 function collisionDetection() {
   for (let c = 0; c < brickColumnCount; c++) {
     for (let r = 0; r < brickRowCount; r++) {
