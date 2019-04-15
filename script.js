@@ -6,7 +6,7 @@ var ctx = canvas.getContext("2d");
 var x = canvas.width / 2;
 var y = canvas.height - 30;
 var dx = 2;
-var dy = -2;
+var dy = -4;
 var ballRadius = 10;
 var a = -0.2;
 var paddleHeight = 10;
@@ -22,7 +22,7 @@ var brickPadding = 10;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
 var score = 0;
-var lives = 3;
+var lives = 2;
 
 var bricks = [];
 for (var c = 0; c < brickColumnCount; c++) {
