@@ -56,7 +56,13 @@ function keyUpHandler(e) {
 function mouseMoveHandler(e) {
   var relativeX = e.clientX - canvas.offsetLeft;
   if (relativeX > 0 && relativeX < canvas.width) {
-    paddleX = relativeX - paddleWidth / 2;
+    if (relativeX <= paddleWidth / 2) {
+      paddleX = 0;
+    } else if (relativeX >= canvas.width - paddleWidth / 2) {
+      paddleX = canvas.width - paddleWidth;
+    } else {
+      paddleX = relativeX - paddleWidth / 2;
+    }
   }
 }
 function collisionDetection() {
